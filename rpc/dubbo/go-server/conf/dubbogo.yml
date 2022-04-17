@@ -10,6 +10,9 @@ dubbo:
     dubbo:
       name: dubbo
       port: 20000
+      params:
+        max-msg-len: 2048
+
   provider:
     services:
       UserProvider:
