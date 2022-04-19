@@ -6,10 +6,26 @@ dubbo:
       protocol: zookeeper
       address: 127.0.0.1:2181
   consumer:
+    request-timeout: "60s"
     references:
       UserProvider:
         protocol: dubbo
         interface: org.apache.dubbo.sample.UserProvider
+
+  protocols:
+    dubbo:
+      name: dubbo
+      params:
+        getty-session-param:
+          # 1024 * 1024 * 16 = 16777216: 16MiB
+          # 1024 1 KiBq
+          max-msg-len: 8388608
+          tcp-write-timeout: "30s"
+          tcp-read-timeout: "30s"
+          wait-timeout: "30s"
+        
   logger:
     zap-config:
       level: info
+      output-paths:
+        - "/root/tmp/client.log"

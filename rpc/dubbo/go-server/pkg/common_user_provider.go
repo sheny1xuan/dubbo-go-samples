@@ -51,7 +51,7 @@ func (u *CommonUserProvider) GetUser(ctx context.Context, req *User) (*User, err
 	gxlog.CInfo("req:%#v", req)
 	user, err = u.getUser(req.ID)
 	if err == nil {
-		gxlog.CInfo("rsp:%#v", user)
+		gxlog.CInfo("rsp:%#v", user.ID)
 	}
 	return user, err
 }

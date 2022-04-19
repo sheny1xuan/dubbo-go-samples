@@ -11,7 +11,14 @@ dubbo:
       name: dubbo
       port: 20000
       params:
-        max-msg-len: 2048
+        getty-session-param:
+          # 1024 * 1024 * 16 = 16777216: 16MiB
+          # 1024 * 1024 * 16 = 4194304: 4MiB
+          # 1024 1 KiB
+          max-msg-len: 8388608
+          tcp-write-timeout: "30s"
+          tcp-read-timeout: "30s"
+          wait-timeout: "30s"
 
   provider:
     services:
@@ -31,3 +38,5 @@ dubbo:
   logger:
     zap-config:
       level: info
+      output-paths:
+        - "/root/tmp/server.log"

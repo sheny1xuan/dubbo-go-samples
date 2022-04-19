@@ -21,9 +21,7 @@ import (
 	"fmt"
 	"strconv"
 	"time"
-)
 
-import (
 	hessian "github.com/apache/dubbo-go-hessian2"
 )
 
@@ -90,7 +88,20 @@ func init() {
 	userMap["000"] = DefaultUser
 	userMap["001"] = User{ID: "001", Name: "ZhangSheng", Age: 18, Sex: Gender(MAN)}
 	userMap["002"] = User{ID: "002", Name: "Lily", Age: 20, Sex: Gender(WOMAN)}
-	userMap["003"] = User{ID: "113", Name: "Moorse", Age: 30, Sex: Gender(WOMAN)}
+	user3 := User{ID: "003", Name: "Moorse", Age: 30, Sex: Gender(WOMAN)}
+	// dataLen := 16777216/4 
+	MB16 := 16777216
+	MB8 := MB16/2
+	// MB4 := MB16/4
+	// MB2 := MB16/8
+	// MB6 := MB4 + MB2
+	dataLen := MB8
+	testStringByte := make([]byte, dataLen)
+	for i := 0; i < dataLen; i++ {
+		testStringByte[i] = 'A'
+	}
+	user3.Name = string(testStringByte)
+	userMap["003"] = user3
 	for k, v := range userMap {
 		v.Time = time.Now()
 		userMap[k] = v
