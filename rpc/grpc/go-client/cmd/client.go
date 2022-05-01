@@ -46,7 +46,7 @@ func main() {
 
 	gxlog.CInfo("\n\n\nstart to test dubbo")
 	req := &pb.HelloRequest{
-		Name: "xujianhai",
+		Name: "xujianhai2",
 	}
 	reply, err := grpcGreeterImpl.SayHello(context.TODO(), req)
 	if err != nil {

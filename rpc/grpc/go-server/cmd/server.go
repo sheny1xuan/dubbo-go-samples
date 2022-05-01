@@ -46,6 +46,10 @@ type GreeterProvider struct {
 
 func (g *GreeterProvider) SayHello(ctx context.Context, req *pb.HelloRequest) (reply *pb.HelloReply, err error) {
 	fmt.Printf("req: %v", req)
+	if (req.Name == "xujianhai") {
+		panic("can't say hello")
+	}
+	
 	return &pb.HelloReply{Message: "this is message from reply"}, nil
 }
 

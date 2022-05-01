@@ -35,6 +35,9 @@ type CommonUserProvider struct {
 }
 
 func (u *CommonUserProvider) getUser(userID string) (*User, error) {
+	// if userID == "002" {
+	// 	panic(perrors.New("can't provide 002"))
+	// }
 	if user, ok := userMap[userID]; ok {
 		return &user, nil
 	}
