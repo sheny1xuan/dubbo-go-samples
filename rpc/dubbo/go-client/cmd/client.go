@@ -55,50 +55,53 @@ func main() {
 }
 
 func test() {
-	logger.Infof("\n\n\nstart to test dubbo")
-	reqUser := &pkg.User{}
-	reqUser.ID = "003"
-	user, err := userProvider.GetUser(context.TODO(), reqUser)
-	if err != nil {
-		panic(err)
+	for i := 0; i < 100; i++ {
+		logger.Infof("\n\n\nstart to test dubbo %d", i)
+		reqUser := &pkg.User{}
+		reqUser.ID = "003"
+		user, err := userProvider.GetUser(context.TODO(), reqUser)
+		if err != nil {
+			panic(err)
+		}
+		logger.Infof("response result: %v", user)
 	}
-	logger.Infof("response result: %v", user)
+	logger.Info("test success!!")
 
-	logger.Infof("\n\n\nstart to test dubbo - enum")
-	gender, err := userProvider.GetGender(context.TODO(), 1)
-	if err != nil {
-		panic(err)
-	}
-	logger.Infof("response result: %v", gender)
+	// logger.Infof("\n\n\nstart to test dubbo - enum")
+	// gender, err := userProvider.GetGender(context.TODO(), 1)
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// logger.Infof("response result: %v", gender)
 
-	logger.Infof("\n\n\nstart to test dubbo - GetUser0")
-	ret, err := userProvider.GetUser0("003", "Moorse")
-	if err != nil {
-		panic(err)
-	}
-	logger.Infof("response result: %v", ret)
+	// logger.Infof("\n\n\nstart to test dubbo - GetUser0")
+	// ret, err := userProvider.GetUser0("003", "Moorse")
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// logger.Infof("response result: %v", ret)
 
-	logger.Infof("\n\n\nstart to test dubbo - GetUsers")
-	ret1, err := userProvider.GetUsers([]string{"002", "003"})
-	if err != nil {
-		panic(err)
-	}
-	logger.Infof("response result: %v", ret1)
+	// logger.Infof("\n\n\nstart to test dubbo - GetUsers")
+	// ret1, err := userProvider.GetUsers([]string{"002", "003"})
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// logger.Infof("response result: %v", ret1)
 
-	logger.Infof("\n\n\nstart to test dubbo - getUser")
+	// logger.Infof("\n\n\nstart to test dubbo - getUser")
 
-	var i int32 = 1
-	user, err = userProvider.GetUser2(context.TODO(), i)
-	if err != nil {
-		panic(err)
-	}
-	logger.Infof("response result: %v", user)
+	// var i int32 = 1
+	// user, err = userProvider.GetUser2(context.TODO(), i)
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// logger.Infof("response result: %v", user)
 
-	logger.Infof("\n\n\nstart to test dubbo - getErr")
-	reqUser.ID = "003"
-	_, err = userProvider.GetErr(context.TODO(), reqUser)
-	if err == nil {
-		panic("err is nil")
-	}
-	logger.Infof("getErr - error: %v", err)
+	// logger.Infof("\n\n\nstart to test dubbo - getErr")
+	// reqUser.ID = "003"
+	// _, err = userProvider.GetErr(context.TODO(), reqUser)
+	// if err == nil {
+	// 	panic("err is nil")
+	// }
+	// logger.Infof("getErr - error: %v", err)
 }
