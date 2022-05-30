@@ -19,6 +19,7 @@ package main
 
 import (
 	"context"
+	"time"
 )
 
 import (
@@ -64,6 +65,8 @@ func test() {
 			panic(err)
 		}
 		logger.Infof("response result: %v", user)
+
+		time.Sleep(time.Second * 2)
 	}
 	logger.Info("test success!!")
 
